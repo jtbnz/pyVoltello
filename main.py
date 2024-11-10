@@ -40,6 +40,7 @@ def get_service_point_usage(service_point_id, security_context, from_date, to_da
 
 
 security_context = "VE/TELEMETRY/abc/xyz"
+print(security_context)
 service_points = get_service_points(security_context)
 if service_points:
     service_point_id = service_points["servicePointId"]
