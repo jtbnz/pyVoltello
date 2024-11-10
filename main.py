@@ -24,6 +24,9 @@ def get_service_points_list(customer_id):
         return response.json()
     else:
         print(f"Error: {response.json()['message']}")
+        print(f"Status code: {response.status_code}")
+        print(f"Response: {response.json()}")
+        
         return None
 
 # Get the service points list
