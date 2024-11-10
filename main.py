@@ -19,7 +19,7 @@ headers = {
 def get_service_points_list(customer_id):
     url = f"{base_url}{service_points_endpoint}"
     params = {
-        "customerId": customer_id;
+        "customerId": customer_id,
         "utilityIdentifier": UTILITY_ID
     }
     response = requests.get(url, headers=headers, params=params)
