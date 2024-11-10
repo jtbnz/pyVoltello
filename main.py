@@ -1,4 +1,5 @@
 import requests
+from requests_toolbelt.utils import dump
 from secrets import API_TOKEN, CUSTOMER_ID
 
 # Base URL for the API
@@ -20,12 +21,15 @@ def get_service_points_list(customer_id):
         "customerId": customer_id
     }
     response = requests.get(url, headers=headers, params=params)
+    
+    data = dump.dump_all(response)
+    print(data.decode('utf-8'))
+    
     if response.status_code == 200:
         return response.json()
     else:
         print(f"Error: {response.json()['message']}")
-        print(f"Status code: {response.status_code}")
-        print(f"Response: {response.json()}")
+
         
         return None
 
