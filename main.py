@@ -10,7 +10,7 @@ service_points_endpoint = "/servicePoints"
 
 # Headers for the request
 headers = {
-    "Authorization": f"Bearer {API_TOKEN}",
+    "Authorization": f"api_key {API_TOKEN}",
     "Content-Type": "application/json"
 }
 
