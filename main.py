@@ -1,48 +1,31 @@
 import requests
-from secrets import API_TOKEN
+from secrets import API_TOKEN, CUSTOMER_ID
 
-# Define the base URL and endpoints
-base_url = "https://cddevapi.village.energy/xv1"
-service_points_endpoint = "/get/energy/electricity/servicepoints/{securityContext}"
-service_point_usage_endpoint = "/get/energy/electricity/servicepoints/{servicePointId}/usage/{securityContext}"
+# Base URL for the API
+base_url = "https://dev.api.yourservice.com"
 
-# Define the headers
+# Endpoint for getting service points list
+service_points_endpoint = "/servicePoints"
+
+# Headers for the request
 headers = {
     "Authorization": f"Bearer {API_TOKEN}",
-    "Accept": "application/json"
+    "Content-Type": "application/json"
 }
 
-# Function to get service points
-def get_service_points(security_context):
-    url = base_url + service_points_endpoint.format(securityContext=security_context)
-    response = requests.get(url, headers=headers)
-    if response.status_code == 200:
-        return response.json()["data"]["servicePoints"]
-    else:
-        print(f"Error: {response.json()['message']}")
-        return None
-
-# Function to get service point usage
-def get_service_point_usage(service_point_id, security_context, from_date, to_date):
-    url = base_url + service_point_usage_endpoint.format(servicePointId=service_point_id, securityContext=security_context)
+# Function to get service points list
+def get_service_points_list(customer_id):
+    url = f"{base_url}{service_points_endpoint}"
     params = {
-        "fromDate": from_date,
-        "toDate": to_date,
-        "returnAllTelemetry": False,
-        "returnData": "alignedHourlyRead"
+        "customerId": customer_id
     }
     response = requests.get(url, headers=headers, params=params)
     if response.status_code == 200:
-        return response.json()["data"]
+        return response.json()
     else:
         print(f"Error: {response.json()['message']}")
         return None
 
-
-security_context = "VE/TELEMETRY/abc/xyz"
-print(security_context)
-service_points = get_service_points(security_context)
-if service_points:
-    service_point_id = service_points["servicePointId"]
-    usage_data = get_service_point_usage(service_point_id, security_context, "2023-12-24", "2023-12-26")
-    print(usage_data)
+# Get the service points list
+service_points_list = get_service_points_list(CUSTOMER_ID)
+print(service_points_list)
