@@ -2,7 +2,7 @@ import requests
 from secrets import API_TOKEN, CUSTOMER_ID
 
 # Base URL for the API
-base_url = "https://dev.api.yourservice.com"
+base_url = "https://cddevapi.village.energy/xv1"
 
 # Endpoint for getting service points list
 service_points_endpoint = "/servicePoints"
