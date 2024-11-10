@@ -1,6 +1,7 @@
 import requests
 from requests_toolbelt.utils import dump
-from secrets import API_TOKEN, CUSTOMER_ID
+from secrets import API_TOKEN, CUSTOMER_ID, UTILITY_ID
+
 
 # Base URL for the API
 base_url = "https://cddevapi.village.energy/xv1"
@@ -18,7 +19,8 @@ headers = {
 def get_service_points_list(customer_id):
     url = f"{base_url}{service_points_endpoint}"
     params = {
-        "customerId": customer_id
+        "customerId": customer_id;
+        "utilityIdentifier": UTILITY_ID
     }
     response = requests.get(url, headers=headers, params=params)
     
