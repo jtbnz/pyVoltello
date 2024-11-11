@@ -11,7 +11,8 @@ service_points_endpoint = "/servicePoints"
 
 # Headers for the request
 headers = {
-    "Authorization": f"api_key {API_TOKEN}",
+    "apiKey": API_TOKEN,
+    "Accept": "*/*",
     "Content-Type": "application/json"
 }
 
@@ -38,3 +39,5 @@ def get_service_points_list(customer_id):
 # Get the service points list
 service_points_list = get_service_points_list(CUSTOMER_ID)
 print(service_points_list)
+
+
