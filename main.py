@@ -39,7 +39,7 @@ def get_service_points_list(customer_id):
 #  get usage
 def get_service_points_usage(servicepointID, from_date, to_date, returnAllTelemetry, returnData):
     # /get/energy/electricity/servicepoints/{servicePointId}/usage/{securityContext}
-    url = f"{base_url}/get/energy/electricity/servicepoints/{servicepointID}/usage/{securityContext}"
+    url = f"{base_url}/get/energy/electricity/servicepoints/{servicepointID}/usage/{securityContext}{customer_id}"
     params = {
         "fromDate": from_date,
         "toDate": to_date,
