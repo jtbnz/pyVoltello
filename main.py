@@ -2,12 +2,12 @@ import requests
 import json
 from requests_toolbelt.utils import dump
 from secrets import API_TOKEN, CUSTOMER_ID, UTILITY_ID
+from datetime import datetime
 
 customer_id = CUSTOMER_ID
 utility_id = UTILITY_ID
 securityContext = "Voltello/CUSTOMERS/Individual/"
 
-#base_url = "https://cddevapi.village.energy/xv1"
 base_url = "https://acapi.vecddevau1.village.energy/xv1"
 
 service_points_endpoint = "/get/customer/energy/electricity/servicepoints/"
@@ -22,9 +22,8 @@ def get_service_points_list(customer_id):
     # Endpoint 
     url = f"{base_url}{service_points_endpoint}{securityContext}{customer_id}"
     params = {
-        "customerId": customer_id,
-       # "utilityIdentifier": utility_id
-    }
+        "customerId": customer_id
+   }
     response = requests.get(url, headers=headers, params=params)
     
     #print (url)
@@ -40,11 +39,11 @@ def get_service_points_list(customer_id):
 
 def get_service_points_detail(servicepointID):
     # Endpoint 
-    url = f"{base_url}{service_points_endpoint}{securityContext}{customer_id}"
+    url = f"{base_url}{service_points_endpoint}{securityContext}"
     params = {
-        "servicepointID": servicepointID,
-
+        "servicepointID": servicepointID
     }
+    
     response = requests.get(url, headers=headers, params=params)
     
     if response.status_code == 200:
@@ -56,7 +55,7 @@ def get_service_points_detail(servicepointID):
 
 #  get usage
 def get_service_points_usage(servicepointID, from_date, to_date, returnAllTelemetry, returnData):
-    # /get/energy/electricity/servicepoints/{servicePointId}/usage/{securityContext}
+
     url = f"{base_url}/get/customer/energy/electricity/servicepoints/{servicepointID}/usage/{securityContext}{customer_id}/"
     params = {
         "fromDate": from_date,
@@ -66,9 +65,6 @@ def get_service_points_usage(servicepointID, from_date, to_date, returnAllTeleme
     }
     
     response = requests.get(url, headers=headers, params=params)
-    
-    #data = dump.dump_all(response)
-    #print(data.decode('utf-8'))
         
     if response.status_code == 200:
         return response.json()
@@ -98,8 +94,8 @@ print(json.dumps(service_points_list, indent=4))
 print ("-------------------------------------------------------------------------------------------------")
 print ("------------------------------       Service Usage      -----------------------------------------")
 print ("-------------------------------------------------------------------------------------------------")
-from_date = "2024-11-14"
-to_date = "2024-11-14"
+from_date = datetime.today().strftime('%Y-%m-%d')
+to_date = datetime.today().strftime('%Y-%m-%d')
 returnAllTelemetry = "true"
 returnData = "dailyTotal" # aligned5MinRead, aligned15MinRead, aligned30MinRead, alignedHourlyRead, dailyTotal
 usage_list = get_service_points_usage(servicePointID, from_date, to_date, returnAllTelemetry, returnData)
