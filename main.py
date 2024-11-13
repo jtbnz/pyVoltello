@@ -39,7 +39,7 @@ def get_service_points_list(customer_id):
 
 def get_service_points_detail(servicepointID):
     # Endpoint 
-    url = f"{base_url}{service_points_endpoint}/{servicePointID}{securityContext}{customer_id}"
+    url = f"{base_url}{service_points_endpoint}{servicePointID}/{securityContext}{customer_id}"
     print (url)
     response = requests.get(url, headers=headers)
     
