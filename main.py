@@ -28,8 +28,8 @@ def get_service_points_list(customer_id):
     response = requests.get(url, headers=headers, params=params)
     
     print (url)
-    #data = dump.dump_all(response)
-    #print(data.decode('utf-8'))
+    data = dump.dump_all(response)
+    print(data.decode('utf-8'))
     
     if response.status_code == 200:
         return response.json()
