@@ -80,11 +80,19 @@ print(" servicePointID: ", servicePointID)
 print ("")
 
 # Get Usage
+print ("-------------------------------------------------------------------------------------------------")
+print ("------------------------------       Service Usage      -----------------------------------------")
+print ("-------------------------------------------------------------------------------------------------")
 from_date = "2024-11-10"
 to_date = "2024-11-11"
 returnAllTelemetry = "false"
 returnData = "dailyTotal" # aligned5MinRead, aligned15MinRead, aligned30MinRead, alignedHourlyRead, dailyTotal
 usage_list = get_service_points_usage(servicePointID, from_date, to_date, returnAllTelemetry, returnData)
+print(json.dumps(usage_list, indent=4))
+
+print ("-------------------------------------------------------------------------------------------------")
+print ("------------------------------       Service Usage      -----------------------------------------")
+print ("-------------------------------------------------------------------------------------------------")
 
 
 
