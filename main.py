@@ -39,10 +39,9 @@ def get_service_points_list(customer_id):
 
 def get_service_points_detail(servicepointID):
     # Endpoint 
-    url = f"{base_url}{service_points_endpoint}{servicePointID}{securityContext}"
-
-    
-    response = requests.get(url, headers=headers, params=params)
+    url = f"{base_url}{service_points_endpoint}/{servicePointID}/{securityContext}"
+   
+    response = requests.get(url, headers=headers)
     
     if response.status_code == 200:
         return response.json()
