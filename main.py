@@ -17,7 +17,7 @@ headers = {
     "Content-Type": "application/json"
 }
 
-#  get service points list
+
 def get_service_points_list(customer_id):
     # Endpoint 
     url = f"{base_url}{service_points_endpoint}{securityContext}{customer_id}"
@@ -39,10 +39,8 @@ def get_service_points_list(customer_id):
 
 def get_service_points_detail(servicepointID):
     # Endpoint 
-    url = f"{base_url}{service_points_endpoint}{securityContext}"
-    params = {
-        "servicepointID": servicepointID
-    }
+    url = f"{base_url}{service_points_endpoint}{servicePointID}{securityContext}"
+
     
     response = requests.get(url, headers=headers, params=params)
     
