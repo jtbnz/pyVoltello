@@ -100,7 +100,7 @@ print(json.dumps(usage_list, indent=4))
 
 
 print ("-------------------------------------------------------------------------------------------------")
-print ("------------------------------     Service Usage Now    -----------------------------------------")
+print ("------------------------------     Service Usage 5Min    -----------------------------------------")
 print ("-------------------------------------------------------------------------------------------------")
 from_date = datetime.today().strftime('%Y-%m-%d')
 to_date = datetime.today().strftime('%Y-%m-%d')
@@ -109,7 +109,15 @@ returnData = "aligned5MinRead" # aligned5MinRead, aligned15MinRead, aligned30Min
 usage_list = get_service_points_usage(servicePointID, from_date, to_date, returnAllTelemetry, returnData)
 print(json.dumps(usage_list, indent=4))
 
-
+print ("-------------------------------------------------------------------------------------------------")
+print ("------------------------------     Service Usage 15Min    -----------------------------------------")
+print ("-------------------------------------------------------------------------------------------------")
+from_date = datetime.today().strftime('%Y-%m-%d')
+to_date = datetime.today().strftime('%Y-%m-%d')
+returnAllTelemetry = "true"
+returnData = "aligned15MinRead" # aligned5minRead, aligned15MinRead, aligned30MinRead, alignedHourlyRead, dailyTotal
+usage_list = get_service_points_usage(servicePointID, from_date, to_date, returnAllTelemetry, returnData)
+print(json.dumps(usage_list, indent=4))
 
 
 
