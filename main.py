@@ -27,15 +27,32 @@ def get_service_points_list(customer_id):
     }
     response = requests.get(url, headers=headers, params=params)
     
-    print (url)
-    data = dump.dump_all(response)
-    print(data.decode('utf-8'))
+    #print (url)
+    #data = dump.dump_all(response)
+    #print(data.decode('utf-8'))
     
     if response.status_code == 200:
         return response.json()
     else:
         print(f"Error: {response.json()['Message']}")
         return None
+
+
+def get_service_points_detail(servicepointID):
+    # Endpoint 
+    url = f"{base_url}{service_points_endpoint}{securityContext}{customer_id}"
+    params = {
+        "servicepointID": servicepointID,
+
+    }
+    response = requests.get(url, headers=headers, params=params)
+    
+    if response.status_code == 200:
+        return response.json()
+    else:
+        print(f"Error: {response.json()['Message']}")
+        return None
+
 
 #  get usage
 def get_service_points_usage(servicepointID, from_date, to_date, returnAllTelemetry, returnData):
@@ -50,8 +67,8 @@ def get_service_points_usage(servicepointID, from_date, to_date, returnAllTeleme
     
     response = requests.get(url, headers=headers, params=params)
     
-    data = dump.dump_all(response)
-    print(data.decode('utf-8'))
+    #data = dump.dump_all(response)
+    #print(data.decode('utf-8'))
         
     if response.status_code == 200:
         return response.json()
@@ -60,26 +77,24 @@ def get_service_points_usage(servicepointID, from_date, to_date, returnAllTeleme
         return None
     
 # Get the service points list
-service_points_list = get_service_points_list(CUSTOMER_ID)
+
 print ("-------------------------------------------------------------------------------------------------")
 print ("------------------------------    Service Points List   -----------------------------------------")
 print ("-------------------------------------------------------------------------------------------------")
-print ("")
+
+service_points_list = get_service_points_list(CUSTOMER_ID)
 print(json.dumps(service_points_list, indent=4))
-print ("")
-
-
-# Extract servicePointID correctly
-print ("-------------------------------------------------------------------------------------------------")
-print ("------------------------------       Service Usage      -----------------------------------------")
-print ("-------------------------------------------------------------------------------------------------")
-
 servicePointID = service_points_list['data']['servicePoints'][0]['servicePointId']
-print ("")
-print(" servicePointID: ", servicePointID)
-print ("")
 
-# Get Usage
+
+print ("-------------------------------------------------------------------------------------------------")
+print ("------------------------------    Service Points Detail -----------------------------------------")
+print ("-------------------------------------------------------------------------------------------------")
+
+service_points_list = get_service_points_detail(servicePointID)
+print(json.dumps(service_points_list, indent=4))
+
+
 print ("-------------------------------------------------------------------------------------------------")
 print ("------------------------------       Service Usage      -----------------------------------------")
 print ("-------------------------------------------------------------------------------------------------")
@@ -90,9 +105,6 @@ returnData = "dailyTotal" # aligned5MinRead, aligned15MinRead, aligned30MinRead,
 usage_list = get_service_points_usage(servicePointID, from_date, to_date, returnAllTelemetry, returnData)
 print(json.dumps(usage_list, indent=4))
 
-print ("-------------------------------------------------------------------------------------------------")
-print ("------------------------------       Service Usage      -----------------------------------------")
-print ("-------------------------------------------------------------------------------------------------")
 
 
 
