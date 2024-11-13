@@ -85,7 +85,7 @@ print ("------------------------------       Service Usage      ----------------
 print ("-------------------------------------------------------------------------------------------------")
 from_date = "2024-11-14"
 to_date = "2024-11-14"
-returnAllTelemetry = "false"
+returnAllTelemetry = "true"
 returnData = "dailyTotal" # aligned5MinRead, aligned15MinRead, aligned30MinRead, alignedHourlyRead, dailyTotal
 usage_list = get_service_points_usage(servicePointID, from_date, to_date, returnAllTelemetry, returnData)
 print(json.dumps(usage_list, indent=4))
