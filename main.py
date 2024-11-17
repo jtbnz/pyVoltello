@@ -1,7 +1,7 @@
 import requests
 import json
 
-from utils import get_service_points_list, get_service_points_detail, get_live_data, get_service_points_der, get_service_points_usage
+from utils import get_service_points_list, get_live_data, get_displayed_data
 
 from requests_toolbelt.utils import dump
 from secrets import API_TOKEN, CUSTOMER_ID, UTILITY_ID
