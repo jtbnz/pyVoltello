@@ -16,15 +16,15 @@ service_points_list = get_service_points_list(CUSTOMER_ID)
 servicePointID = service_points_list['data']['servicePoints'][0]['servicePointId']
 
 live_data = get_live_data(servicePointID)
-#print(json.dumps(live_data, indent=4))
 
-solar_now = live_data['data']['flowData']['power']['solar']['power']
-solar_name = live_data['data']['flowData']['power']['solar']['nickName']
-grid_now = live_data['data']['flowData']['power']['grid']['power']
-battery_now = live_data['data']['flowData']['power']['battery']['power']
-battery_charge_now = live_data['data']['flowData']['power']['battery']['stateOfCharge']
+
+solar_now = live_data['data']['flowData']['power']['solar']['endPoints']['power']
+solar_name = live_data['data']['flowData']['power']['solar']['endPoints']['nickName']
+grid_now = live_data['data']['flowData']['power']['grid']['endPoints']['power']
+battery_now = live_data['data']['flowData']['power']['battery']['endPoints']['power']
+battery_charge_now = live_data['data']['flowData']['power']['battery']['endPoints']['stateOfCharge']
 ev_now = live_data['data']['flowData']['power']['ev']['power']
-home_now = live_data['data']['flowData']['power']['home']['power']
+home_now = live_data['data']['flowData']['power']['home']['endPoints']['power']
 
 print(f"Current Power Flow for {solar_name}:")
 print(f"  Solar: {solar_now} W")

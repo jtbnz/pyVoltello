@@ -31,7 +31,6 @@ def get_service_points_list(customer_id):
 
 def get_service_points_detail(servicepointID):
     url = f"{base_url}{service_points_endpoint}{servicepointID}/usage/{securityContext}{CUSTOMER_ID}"
-    print(url)
     response = requests.get(url, headers=headers)
     
     if response.status_code == 200:
@@ -42,7 +41,6 @@ def get_service_points_detail(servicepointID):
 
 def get_live_data(servicepointID):
     url = f"{base_url}{service_points_endpoint}{servicepointID}/usage/{securityContext}{CUSTOMER_ID}"
-    print(url)
     params = {
         "action": "getPowerForServicePoint",
         "returnFormat": "VE"
@@ -58,7 +56,6 @@ def get_live_data(servicepointID):
 def get_service_points_der(servicepointID):
 
     url = f"{base_url}{service_points_endpoint}{servicepointID}/der/{securityContext}{customer_id}/"
-    print (url)
     response = requests.get(url, headers=headers)
     
     if response.status_code == 200:
