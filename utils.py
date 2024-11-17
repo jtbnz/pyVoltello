@@ -86,22 +86,23 @@ def get_displayed_data(live_data):
     displayed_data = {}
     flow_data = live_data['data']['flowData']
     is_displayed = flow_data['isDisplayed']
+    power_data = flow_data['power']
 
     if is_displayed['grid']:
-        displayed_data['grid'] = flow_data['power']['grid']['endPoints']['power']
+        displayed_data['grid'] = power_data['grid']['power']
     if is_displayed['solar']:
         displayed_data['solar'] = {
-            'power': flow_data['power']['solar']['endPoints']['power'],
-            'name': flow_data['power']['solar']['endPoints']['nickName']
+            'power': power_data['solar']['power'],
+            'name': power_data['solar']['endPoints'][0]['nickName']
         }
     if is_displayed['battery']:
         displayed_data['battery'] = {
-            'power': flow_data['power']['battery']['endPoints']['power'],
-            'stateOfCharge': flow_data['power']['battery']['endPoints']['stateOfCharge']
+            'power': power_data['battery']['power'],
+            'stateOfCharge': power_data['battery']['endPoints'][0]['stateOfCharge']
         }
     if is_displayed['home']:
-        displayed_data['home'] = flow_data['power']['home']['endPoints']['power']
+        displayed_data['home'] = power_data['home']['power']
     if is_displayed['ev']:
-        displayed_data['ev'] = flow_data['power']['ev']['endPoints']['power']
+        displayed_data['ev'] = power_data['ev']['power']
 
-    return displayed_data            
+    return displayed_data        
