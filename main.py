@@ -18,18 +18,17 @@ servicePointID = service_points_list['data']['servicePoints'][0]['servicePointId
 live_data = get_live_data(servicePointID)
 
 
-solar_now = live_data['data']['flowData']['power']['solar']['endPoints']['power']
-solar_name = live_data['data']['flowData']['power']['solar']['endPoints']['nickName']
-grid_now = live_data['data']['flowData']['power']['grid']['endPoints']['power']
-battery_now = live_data['data']['flowData']['power']['battery']['endPoints']['power']
-battery_charge_now = live_data['data']['flowData']['power']['battery']['endPoints']['stateOfCharge']
-ev_now = live_data['data']['flowData']['power']['ev']['power']
-home_now = live_data['data']['flowData']['power']['home']['endPoints']['power']
+displayed_data = get_displayed_data(live_data)
 
-print(f"Current Power Flow for {solar_name}:")
-print(f"  Solar: {solar_now} W")
-print(f"  Grid: {grid_now} W")
-print(f"  Battery: {battery_now} W")
-print(f"  Battery State of Charge: {battery_charge_now}%")
-print(f"  EV: {ev_now} W")
-print(f"  Home: {home_now} W")
+print("Current Power Flow:")
+if 'solar' in displayed_data:
+    print(f"  Solar ({displayed_data['solar']['name']}): {displayed_data['solar']['power']} W")
+if 'grid' in displayed_data:
+    print(f"  Grid: {displayed_data['grid']} W")
+if 'battery' in displayed_data:
+    print(f"  Battery: {displayed_data['battery']['power']} W")
+    print(f"  Battery State of Charge: {displayed_data['battery']['stateOfCharge']}%")
+if 'home' in displayed_data:
+    print(f"  Home: {displayed_data['home']} W")
+if 'ev' in displayed_data:
+    print(f"  EV: {displayed_data['ev']} W")

@@ -82,4 +82,26 @@ def get_service_points_usage(servicepointID, from_date, to_date, returnAllTeleme
         print(f"Error: {response.json()['Message']}")
         return None
     
-            
+def get_displayed_data(live_data):
+    displayed_data = {}
+    flow_data = live_data['data']['flowData']
+    is_displayed = flow_data['isDisplayed']
+
+    if is_displayed['grid']:
+        displayed_data['grid'] = flow_data['power']['grid']['endPoints']['power']
+    if is_displayed['solar']:
+        displayed_data['solar'] = {
+            'power': flow_data['power']['solar']['endPoints']['power'],
+            'name': flow_data['power']['solar']['endPoints']['nickName']
+        }
+    if is_displayed['battery']:
+        displayed_data['battery'] = {
+            'power': flow_data['power']['battery']['endPoints']['power'],
+            'stateOfCharge': flow_data['power']['battery']['endPoints']['stateOfCharge']
+        }
+    if is_displayed['home']:
+        displayed_data['home'] = flow_data['power']['home']['endPoints']['power']
+    if is_displayed['ev']:
+        displayed_data['ev'] = flow_data['power']['ev']['endPoints']['power']
+
+    return displayed_data            
