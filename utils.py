@@ -1,12 +1,14 @@
 import requests
 from secrets import API_TOKEN, CUSTOMER_ID, UTILITY_ID
 
-# Base URL for the API
+customer_id = CUSTOMER_ID
+utility_id = UTILITY_ID
+
 base_url = "https://acapi.vecddevau1.village.energy/xv1"
 service_points_endpoint = "/get/customer/energy/electricity/servicepoints/"
 securityContext = "Voltello/CUSTOMERS/Individual/"
 
-# Headers for the request
+
 headers = {
     "apiKey": API_TOKEN,
     "Accept": "*/*",
