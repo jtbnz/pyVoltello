@@ -1,8 +1,7 @@
 import requests
 import json
 
-from defs import *
-from utils import *
+from utils import get_service_points_list, get_service_points_detail, get_live_data, get_service_points_der, get_service_points_usage
 
 from requests_toolbelt.utils import dump
 from secrets import API_TOKEN, CUSTOMER_ID, UTILITY_ID
@@ -10,8 +9,6 @@ from datetime import datetime
 
 customer_id = CUSTOMER_ID
 utility_id = UTILITY_ID
-
-
 
 
     
