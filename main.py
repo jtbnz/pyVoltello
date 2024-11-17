@@ -1,7 +1,7 @@
 import requests
 import json
-import utils.py
-import defs.py
+from utils.py import *
+from defs.py import *
 from requests_toolbelt.utils import dump
 from secrets import API_TOKEN, CUSTOMER_ID, UTILITY_ID
 from datetime import datetime
