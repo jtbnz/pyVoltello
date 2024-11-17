@@ -82,9 +82,10 @@ def get_live_data(servicepointID):
         "returnFormat": "VE"
     }
     
-    request_data = dump.dump_all(response.request)
-    print(request_data.decode('utf-8'))
+
     response = requests.get(url, headers=headers, params=params)
+    request_data = dump.dump_all(response.request)
+    print(request_data.decode('utf-8')) 
         
     if response.status_code == 200:
         return response.json()
