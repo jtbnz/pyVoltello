@@ -54,6 +54,7 @@ def get_live_data(servicepointID):
     else:
         print(f"Error: {response.json()['Message']}")
         return None
+    
 def get_service_points_der(servicepointID):
 
     url = f"{base_url}{service_points_endpoint}{servicepointID}/der/{securityContext}{customer_id}/"
