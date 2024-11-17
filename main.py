@@ -34,7 +34,7 @@ def get_service_points_list(customer_id):
 def get_service_points_detail(servicepointID):
     # Endpoint 
     url = f"{base_url}{service_points_endpoint}{servicePointID}/{securityContext}{customer_id}"
-    #print (url)
+    print (url)
     response = requests.get(url, headers=headers)
     
     if response.status_code == 200:
@@ -46,7 +46,7 @@ def get_service_points_detail(servicepointID):
 def get_service_points_der(servicepointID):
 
     url = f"{base_url}{service_points_endpoint}{servicepointID}/der/{securityContext}{customer_id}/"
-     #print (url)
+    print (url)
     response = requests.get(url, headers=headers)
     
     if response.status_code == 200:
@@ -76,11 +76,14 @@ def get_service_points_usage(servicepointID, from_date, to_date, returnAllTeleme
 def get_live_data(servicepointID):
     #apiPath="/get/customer/energy/electricity/servicepoints/${servicePointId}/usage/${customerSecurityContext}?action=getPowerForServicePoint&returnFormat=VE"
     url = f"{base_url}{service_points_endpoint}{servicepointID}/usage/{securityContext}{customer_id}/"
+    print (url)
     params = {
         "action": "getPowerForServicePoint",
         "returnFormat": "VE"
     }
     
+    request_data = dump.dump_all(response.request)
+    print(request_data.decode('utf-8'))
     response = requests.get(url, headers=headers, params=params)
         
     if response.status_code == 200:
