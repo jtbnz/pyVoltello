@@ -12,11 +12,13 @@ https://github.com/villageenergy/ve-public-api/discussions/2
 To run this project, you need to create a `secrets.py` file in the root directory of the project. This file will store your API token. Follow these steps:
 
 1. Create a new file named `secrets.py` in the root directory.
-2. Add the following line to the `secrets.py` file:
+2. Add the following lines to the `secrets.py` file:
 
     ```python
     # secrets.py
     API_TOKEN = "YOUR_API_TOKEN"
+    CUSTOMER_ID = "YOUR CUSTOMER ID"
+    UTILITY_ID = "YOUR UTILITY ID"
     ```
 
 3. Replace `"YOUR_API_TOKEN"` with your actual API token.
