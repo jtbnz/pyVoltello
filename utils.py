@@ -40,12 +40,15 @@ def get_service_points_detail(servicepointID):
         return None
 
 def get_live_data(servicepointID):
-    url = f"{base_url}{service_points_endpoint}{servicepointID}/usage/{securityContext}{CUSTOMER_ID}"
-    params = {
-        "action": "getPowerForServicePoint",
-        "returnFormat": "VE"
-    }
-    response = requests.get(url, headers=headers, params=params)
+    #url = f"{base_url}{service_points_endpoint}{servicepointID}/usage/{securityContext}{CUSTOMER_ID}"
+    #params = {
+    #    "action": "getPowerForServicePoint",
+    #    "returnFormat": "VE"
+    #}
+    #response = requests.get(url, headers=headers, params=params) 
+    url = f"{base_url}{service_points_endpoint}{servicepointID}/usage/realtime/{securityContext}{CUSTOMER_ID}"
+    response = requests.get(url, headers=headers)
+    
         
     if response.status_code == 200:
         return response.json()

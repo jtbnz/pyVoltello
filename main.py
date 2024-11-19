@@ -25,10 +25,10 @@ if 'solar' in displayed_data:
     print(f"  Solar ({displayed_data['solar']['name']}): {displayed_data['solar']['power']} kW")
 if 'grid' in displayed_data:
     print(f"  Grid: {displayed_data['grid']} kW")
+if 'home' in displayed_data:
+    print(f"  Home: {displayed_data['home']} kW")    
 if 'battery' in displayed_data:
     print(f"  Battery: {displayed_data['battery']['power']} kW")
     print(f"  Battery State of Charge: {displayed_data['battery']['stateOfCharge']}%")
-if 'home' in displayed_data:
-    print(f"  Home: {displayed_data['home']} kW")
 if 'ev' in displayed_data:
     print(f"  EV: {displayed_data['ev']} kW")
