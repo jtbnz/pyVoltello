@@ -4,7 +4,7 @@ import json
 from utils import get_service_points_list, get_live_data, get_displayed_data
 
 from requests_toolbelt.utils import dump
-from secrets import API_TOKEN, CUSTOMER_ID, UTILITY_ID
+from config import API_TOKEN, CUSTOMER_ID, UTILITY_ID
 from datetime import datetime
 
 customer_id = CUSTOMER_ID
