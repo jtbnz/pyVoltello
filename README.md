@@ -7,27 +7,28 @@ testing for python access to Voltello
 https://github.com/villageenergy/ve-public-api/discussions/2
 
 
-### Creating the `secrets.py` File
+### Creating the `config.py` File
 
-To run this project, you need to create a `secrets.py` file in the root directory of the project. This file will store your API token. Follow these steps:
+To run this project, you need to create a `config.py` file in the root directory of the project. This file will store your API token. Follow these steps:
 
-1. Create a new file named `secrets.py` in the root directory.
-2. Add the following lines to the `secrets.py` file:
+1. Create a new file named `config.py` in the root directory.
+2. Add the following lines to the `config.py` file:
 
     ```python
-    # secrets.py
-    API_TOKEN = "YOUR_API_TOKEN"
+    # config.py
+    API_TOKEN = "YOUR_API_TOKEN" 
     CUSTOMER_ID = "YOUR CUSTOMER ID"
     UTILITY_ID = "YOUR UTILITY ID"
     ```
 
 3. Replace `"YOUR_API_TOKEN"` with your actual API token.
 
-Your `secrets.py` file should look like this:
+Your `config.py` file should look like this:
 
 ```python
 # 
-API_TOKEN = "YOUR_API_TOKEN"
+API_TOKEN = "YOUR_API_TOKEN" # This is obtained from the Mobile App
+CUSTOMER_ID = "YOUR CUSTOMER ID" # Not sure how to get this yet
 ```
 
 ### References
