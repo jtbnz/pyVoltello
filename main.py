@@ -10,14 +10,9 @@ from datetime import datetime
 customer_id = CUSTOMER_ID
 utility_id = UTILITY_ID
 
-
 service_points_list = get_service_points_list(CUSTOMER_ID)
-
 servicePointID = service_points_list['data']['servicePoints'][0]['servicePointId']
-
 live_data = get_live_data(servicePointID)
-
-
 displayed_data = get_displayed_data(live_data)
 
 print("Current Power Flow:")
