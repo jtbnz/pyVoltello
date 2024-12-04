@@ -1,5 +1,5 @@
 import requests
-from secrets import API_TOKEN, CUSTOMER_ID, UTILITY_ID
+from config import API_TOKEN, CUSTOMER_ID, UTILITY_ID
 
 customer_id = CUSTOMER_ID
 utility_id = UTILITY_ID
@@ -31,7 +31,7 @@ def get_service_points_list(customer_id):
 
 def get_service_points_detail(servicepointID):
     url = f"{base_url}{service_points_endpoint}{servicepointID}/usage/{securityContext}{CUSTOMER_ID}"
-    response = requests.get(url, headers=headers)
+    response = requests.get(url, headers=headers)                                                                          
     
     if response.status_code == 200:
         return response.json()
